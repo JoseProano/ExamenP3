@@ -1,0 +1,206 @@
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+/* Layout principal */
+header {
+    background: rgba(255, 255, 255, 0.95);
+    text-align: center;
+    padding: 2rem 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    color: #4a5568;
+    font-size: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+/* Estilos del perfil */
+.profile {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 3rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    width: 100%;
+}
+
+.profile h2 {
+    color: #2d3748;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    border-bottom: 3px solid #667eea;
+    padding-bottom: 0.5rem;
+}
+
+.info {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.info strong {
+    color: #4a5568;
+}
+
+/* Secciones */
+.presentation,
+.personal-data,
+.project-info {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: 10px;
+    border-left: 4px solid #667eea;
+}
+
+.presentation h3,
+.personal-data h3,
+.project-info h3 {
+    color: #2d3748;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.presentation p,
+.project-info p {
+    text-align: justify;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #4a5568;
+}
+
+/* Lista de datos personales */
+.personal-data ul {
+    list-style: none;
+}
+
+.personal-data li {
+    padding: 0.5rem 0;
+    font-size: 1rem;
+    color: #4a5568;
+    border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.personal-data li:last-child {
+    border-bottom: none;
+}
+
+.personal-data strong {
+    color: #2d3748;
+    display: inline-block;
+    width: 150px;
+}
+
+/* Footer */
+footer {
+    background: rgba(45, 55, 72, 0.9);
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 3rem;
+}
+
+footer p {
+    margin-bottom: 0.5rem;
+}
+
+footer p:last-child {
+    margin-bottom: 0;
+    opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    main {
+        padding: 0 1rem;
+    }
+    
+    .profile {
+        padding: 2rem;
+    }
+    
+    .profile h2 {
+        font-size: 1.5rem;
+    }
+    
+    .personal-data strong {
+        width: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+    }
+    
+    .profile {
+        padding: 1.5rem;
+    }
+    
+    .presentation,
+    .personal-data,
+    .project-info {
+        padding: 1rem;
+    }
+    
+    .personal-data strong {
+        width: 100px;
+        display: block;
+        margin-bottom: 0.2rem;
+    }
+}
+
+/* Animaciones */
+.profile {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Efectos hover */
+.presentation:hover,
+.personal-data:hover,
+.project-info:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+    transition: all 0.3s ease;
+}

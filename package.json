@@ -1,0 +1,38 @@
+{
+  "name": "clima-conversion",
+  "version": "1.0.0",
+  "description": "Proyecto de conversión de temperatura y media móvil con CI/CD",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "lint": "eslint src/ tests/",
+    "lint:fix": "eslint src/ tests/ --fix",
+    "start": "node src/index.js",
+    "build": "echo 'Build completed'",
+    "deploy": "gh-pages -d public"
+  },
+  "keywords": ["temperatura", "conversion", "clima", "media-movil", "ci-cd"],
+  "author": "José Proaño",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^9.32.0",
+    "jest": "^30.0.5",
+    "gh-pages": "^6.1.1"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageDirectory": "coverage",
+    "coverageReporters": ["text", "lcov", "html"],
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    },
+    "testEnvironment": "node",
+    "testMatch": ["**/tests/**/*.test.js"]
+  }
+}

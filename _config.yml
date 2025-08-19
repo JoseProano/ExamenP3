@@ -1,0 +1,34 @@
+# Configuración para GitHub Pages
+include:
+  - "_*_.html"
+  - "_*_.md"
+
+# Excluir archivos innecesarios
+exclude:
+  - node_modules/
+  - coverage/
+  - tests/
+  - src/
+  - "*.json"
+  - "*.js"
+  - "*.md"
+  - ".github/"
+
+# Plugin para GitHub Pages
+plugins:
+  - jekyll-optional-front-matter
+
+# Configuración Jekyll
+markdown: kramdown
+highlighter: rouge
+
+# Configuración del sitio
+title: "Clima & Conversión"
+description: "Proyecto de conversión de temperatura y media móvil con CI/CD"
+url: "https://joseproano.github.io"
+baseurl: "/clima-conversion"
+
+# Configuración de construcción
+safe: true
+source: public
+destination: _site
