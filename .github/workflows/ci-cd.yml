@@ -8,10 +8,11 @@ on:
 
 # Permisos necesarios para el workflow
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
   pull-requests: write
+  actions: read
 
 jobs:
   test:
@@ -95,10 +96,16 @@ jobs:
     if: github.event_name == 'pull_request'
     needs: test
     
+    permissions:
+      contents: write
+      pull-requests: write
+    
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-      
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
@@ -117,10 +124,13 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./public
         destination_dir: preview/pr-${{ github.event.number }}
+        keep_files: false
+        force_orphan: true
         
     - name: Comment PR with preview link
       uses: actions/github-script@v7
       with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
           const prNumber = context.issue.number;
           const previewUrl = `https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/preview/pr-${prNumber}/`;
@@ -129,5 +139,5 @@ jobs:
             issue_number: prNumber,
             owner: context.repo.owner,
             repo: context.repo.repo,
-            body: `**Preview desplegado!**\n\n📱 Preview URL: ${previewUrl}\n\n*Este preview se actualizará automáticamente con cada push al PR.*`
+            body: `🚀 **Preview desplegado!**\n\n📱 Preview URL: ${previewUrl}\n\n*Este preview se actualizará automáticamente con cada push al PR.*`
           });
