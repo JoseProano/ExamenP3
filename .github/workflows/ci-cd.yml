@@ -45,7 +45,7 @@ jobs:
         npm test -- --coverage --passWithNoTests
         
     - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v3
+      uses: codecov/codecov-action@v4
       with:
         file: ./coverage/lcov.info
         flags: unittests
@@ -78,16 +78,16 @@ jobs:
       run: npm run build
       
     - name: Setup Pages
-      uses: actions/configure-pages@v3
+      uses: actions/configure-pages@v4
       
     - name: Upload artifact
-      uses: actions/upload-pages-artifact@v2
+      uses: actions/upload-pages-artifact@v3
       with:
         path: './public'
         
     - name: Deploy to GitHub Pages
       id: deployment
-      uses: actions/deploy-pages@v2
+      uses: actions/deploy-pages@v4
 
   # Job para preview en PRs
   preview:
@@ -112,7 +112,7 @@ jobs:
       run: npm run build
       
     - name: Deploy Preview
-      uses: peaceiris/actions-gh-pages@v3
+      uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./public
@@ -129,5 +129,5 @@ jobs:
             issue_number: prNumber,
             owner: context.repo.owner,
             repo: context.repo.repo,
-            body: `🚀 **Preview desplegado!**\n\n📱 Preview URL: ${previewUrl}\n\n*Este preview se actualizará automáticamente con cada push al PR.*`
+            body: `**Preview desplegado!**\n\n📱 Preview URL: ${previewUrl}\n\n*Este preview se actualizará automáticamente con cada push al PR.*`
           });
